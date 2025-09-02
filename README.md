@@ -1,15 +1,15 @@
 # Wi-Fi Security Analysis: Attacking & Defending WPA2 Networks
 
-## 📌 Project Overview
+##  Project Overview
 This project demonstrates a **Wi-Fi security assessment** by attacking a WPA2-PSK network and implementing defensive measures to protect against real-world threats. 
 
-✅ **Attack Scenario:** Capturing a WPA2 handshake and cracking the Wi-Fi password.  
-✅ **Detection Methods:** Wireshark analysis, router logs, and intrusion detection tools.  
-✅ **Defensive Measures:** WPA2-AES, MAC filtering, and security hardening.
+ **Attack Scenario:** Capturing a WPA2 handshake and cracking the Wi-Fi password.  
+ **Detection Methods:** Wireshark analysis, router logs, and intrusion detection tools.  
+ **Defensive Measures:** WPA2-AES, MAC filtering, and security hardening.
 
 ---
 
-## 🔥 1. Attack Execution: Capturing WPA2 Handshake
+##  1. Attack Execution: Capturing WPA2 Handshake
 
 ### **1.1 Setup: Enable Monitor Mode on TL Adapter**
 ```bash
@@ -39,7 +39,7 @@ sudo aircrack-ng capture-05.cap
 
 ---
 
-## 🕵️ 2. Detection: Identifying the Attack
+##  2. Detection: Identifying the Attack
 
 ### **2.1 Analyze Handshake in Wireshark**
 - Open `capture-05.cap` in Wireshark.
@@ -56,7 +56,7 @@ sudo aircrack-ng capture-05.cap
 
 ---
 
-## 🔓 3. Cracking WPA2 Password
+##  3. Cracking WPA2 Password
 
 ### **3.1 Run Aircrack-ng with RockYou Wordlist**
 ```bash
@@ -73,7 +73,7 @@ sudo aircrack-ng -w custom.txt -b 1C:3B:F3:73:99:4C capture-05.cap
 
 ---
 
-## 🛡️ 4. Defense Strategies: Securing Wi-Fi Against Attacks
+##  4. Defense Strategies: Securing Wi-Fi Against Attacks
 
 ### **4.1 Strengthen WPA2 Security**
 - **Set Encryption:** WPA2-PSK with AES (**never TKIP**).
@@ -86,19 +86,19 @@ sudo aircrack-ng -w custom.txt -b 1C:3B:F3:73:99:4C capture-05.cap
 
 ---
 
-## 🎯 Why This Project Matters for SOC Teams
+##  Why This Project Matters for SOC Teams
 🔹 **Real-World Threat:** Wi-Fi attacks are used in penetration testing and adversary simulations.  
 🔹 **SOC Detection Relevance:** SOC analysts monitor for unauthorized deauth attacks and suspicious EAPOL packets.  
 🔹 **Defensive Hardening:** This project demonstrates how to **detect & mitigate Wi-Fi attacks effectively**.
 
 ---
 
-## 📌 Conclusion
+##  Conclusion
 This project **simulates a real-world Wi-Fi attack** and **demonstrates key cybersecurity defense mechanisms**. It is valuable for anyone looking to break into **SOC Level 1 roles, penetration testing, or cybersecurity research.**
 
 **Next Steps:** 
 - Implement **Wi-Fi Intrusion Detection** using ELK or Splunk.
 - Automate attack detection with Python scripts.
 
-🔗 **Follow my cybersecurity journey on LinkedIn & GitHub!** 🚀
+ **Follow my cybersecurity journey on LinkedIn & GitHub!** 
 
